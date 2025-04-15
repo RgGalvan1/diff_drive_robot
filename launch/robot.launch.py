@@ -39,7 +39,7 @@ def generate_launch_description():
     declare_use_sim_time= DeclareLaunchArgument(
         'use_sim_time',
         default_value='false',
-        urfd='If true, use simulated clock'
+        description='If true, use simulated clock'
     )
     
     declare_use_ros2_control = DeclareLaunchArgument(
@@ -81,12 +81,13 @@ def generate_launch_description():
     )
 
     # robot_state_publisher setup    
-    robot_description_config = Command ([
-        'xacro ', 
-        robot_description_xacro_file, 
-        ' use_ros2_control:=', 
-        use_ros2_control
-        ])
+   robot_description_config = Command([
+    'xacro ', 
+    robot_description_xacro_file, 
+    ' use_ros2_control:=', 
+    use_ros2_control
+])
+
     
     params = {
         'robot_description': ParameterValue(robot_description_config, value_type=str), 
